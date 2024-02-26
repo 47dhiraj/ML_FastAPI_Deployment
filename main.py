@@ -1,4 +1,4 @@
-from model import ml_pipeline 
+from model import ml_recommendation_model 
 
 from typing import Union
 from fastapi import FastAPI
@@ -7,7 +7,7 @@ from fastapi import FastAPI
 ## Note: FastAPI default provides http://127.0.0.1:8000/docs url to access "Swagger UI" API/Endpoints Documentation.
 
 
-# app means creating a FastAPI instance/object
+# creating a FastAPI instance/object
 app = FastAPI()
 
 
@@ -20,10 +20,8 @@ def read_root():
 
 @app.post("/recommendations")
 def request_recommendations(movie: str, rating: int):
-    # pass
 
-    recommendations = ml_pipeline(movie, rating)
+    recommendations = ml_recommendation_model(movie, rating)
 
-    return recommendations
-    
-    # return {"similar movies": recommendations}
+    # return recommendations
+    return {"similar movies": recommendations}

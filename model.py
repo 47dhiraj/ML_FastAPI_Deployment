@@ -4,7 +4,7 @@ import pandas as pd
 
 
 
-def ml_pipeline(movie: str, rating: int):
+def ml_recommendation_model(movie: str, rating: int):
 
     # # loading the data to use correlation algorithm
     # movies = pd.read_csv('./data/movies.csv')
@@ -28,27 +28,53 @@ def ml_pipeline(movie: str, rating: int):
 
 
     # function to get similar movies
-    def get_similar_movies(movie_name,user_rating):
-        similar_score = item_similarity_df[movie_name]*(user_rating-2.5)
-        similar_score = similar_score.sort_values(ascending=False)
+    def get_similar_movies(movie_name, user_rating):
+        similar_score = item_similarity_df[movie_name] * (user_rating - 2.5)
+        similar_score = similar_score.sort_values(ascending= False)
         return similar_score
 
 
     # function to check if the recommended movies is already seen or not ? 
-    def check_seen(movie, seen_movies):
-        for item in seen_movies:
-            if item == movie:
-                return True
-        return False
+    def check_seen(movie, seen_movie):
+        if movie == seen_movie:
+            return True
+        else:
+            return False
 
 
     # Empty Dataframe
     similar_movies = pd.DataFrame()    
 
-    # Getting similar movies
-    similar_movies = similar_movies._append(get_similar_movies(movie,rating), ignore_index=True)
+    similar_movie_list = []
 
-    all_recommend = similar_movies.sum().sort_values(ascending=False)
 
-    # return the recommended movies
-    return all_recommend
+    try:
+        
+        # Getting similar movies
+        similar_movies = similar_movies._append(get_similar_movies(movie, rating), ignore_index= True)
+
+        all_recommend = similar_movies.sum().sort_values(ascending= False)
+
+
+
+        # Logic to check & remove, if the recommended movies is already seen
+        check_title = movie
+        i = 0
+
+        for recommended_movie, score in all_recommend.items():
+            if not check_seen(recommended_movie, check_title):
+                similar_movie_list.append(recommended_movie)
+            else:
+                pass
+
+            i = i + 1
+            if i >= 30:
+                break
+
+
+        # return the recommended/similar movies
+        return similar_movie_list
+
+    except:
+        # return empty list
+        return similar_movie_list

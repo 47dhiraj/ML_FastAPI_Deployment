@@ -20,7 +20,7 @@ RUN pip3 install --upgrade pip
 
 
 # command for installing all the requirements in docker container
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 
 # copying all the files & folders in local computer to the /app directory in the container
