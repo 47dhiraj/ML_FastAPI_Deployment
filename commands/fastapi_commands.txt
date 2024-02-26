@@ -1,0 +1,21 @@
+
+## FastAPI commands:
+
+
+1. To install FastAPI:
+
+    --> pip install fastapi
+
+
+2. To install uvicorn server:
+
+    --> pip install "uvicorn[standard]"
+
+
+3. To run FastAPI applicatin/project locally:
+
+    --> uvicorn main:app --reload
+
+    Here, main:app mean,  'from main import app' 
+
+

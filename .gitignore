@@ -6,7 +6,3 @@ fast_env
 ./fast_env
 venv
 ./venv
-
-
-commands
-./commands
