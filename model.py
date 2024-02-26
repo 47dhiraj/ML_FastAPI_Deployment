@@ -7,15 +7,25 @@ import subprocess
 
 def ml_pipeline(movie: str, rating: int):
 
-    # loading the data
-    movies = pd.read_csv('./data/movies.csv')
-    ratings = pd.read_csv('./data/ratings.csv')
+    # # loading the data to use correlation algorithm
+    # movies = pd.read_csv('./data/movies.csv')
+    # ratings = pd.read_csv('./data/ratings.csv')
 
-    # data manipulation & data cleaning
-    ratings = pd.merge(movies, ratings).drop(['genres','timestamp'], axis=1)
-    user_ratings = ratings.pivot_table(index=['userId'], columns=['title'], values='rating')
-    user_ratings = user_ratings.dropna(thresh=10, axis=1).fillna(0)
-    item_similarity_df = user_ratings.corr(method='pearson')
+
+    # # data manipulation & data cleaning
+    # ratings = pd.merge(movies, ratings).drop(['genres','timestamp'], axis=1)
+    # user_ratings = ratings.pivot_table(index=['userId'], columns=['title'], values='rating')
+    # user_ratings = user_ratings.dropna(thresh=10, axis=1).fillna(0)
+    # item_similarity_df = user_ratings.corr(method='pearson')
+
+
+    ## To create .pkl file from Pandas Dataframe
+    # item_similarity_df.to_pickle('item_similarity_df.pkl')
+
+
+
+    # Directly Loading pre-created .pkl file/model for more efficient web-page loading
+    item_similarity_df = pd.read_pickle('./data/item_similarity_df.pkl')
 
 
     # function to get similar movies
