@@ -1,8 +1,16 @@
 __pycache__
 ./__pycache__
-**./__pycache__
+**/__pycache__
 
 fast_env
 ./fast_env
+**/.fast_env
 venv
 ./venv
+**/.venv
+**/.env
+
+**/.DS_Store
+
+**/.vs
+**/.vscode

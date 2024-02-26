@@ -24,4 +24,6 @@ def request_recommendations(movie: str, rating: int):
 
     recommendations = ml_pipeline(movie, rating)
 
-    return {"similar movies": recommendations}
+    return recommendations
+    
+    # return {"similar movies": recommendations}

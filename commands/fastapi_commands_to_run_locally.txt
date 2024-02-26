@@ -1,5 +1,5 @@
 
-## FastAPI commands:
+## FastAPI commands to run locally:
 
 
 1. To install FastAPI:
@@ -16,6 +16,10 @@
 
     --> uvicorn main:app --reload
 
-    Here, main:app mean,  'from main import app' 
+    Here, main:app mean,  'from main import app'
 
+
+4. To install extra model libraries/packages from requirements.txt
+
+    --> pip install -r requirements.txt
 
