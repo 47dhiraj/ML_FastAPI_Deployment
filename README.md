@@ -1,2 +1,2 @@
 
-## Deployed ML Recommendation using FastAPI
+## ML model deployment using FastAPI & Docker
